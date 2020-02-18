@@ -121,7 +121,9 @@ const Modal = props => {
         window.location.href = 'instagram://'
     }
 
-    const onTwitterclick = e => {
+    const onCopyTwitter = e => {
+
+        window.location.href = 'twitter://'
 
     }
 
@@ -169,8 +171,14 @@ const Modal = props => {
                                         <FontAwesomeIcon icon={['fab','facebook']} style={{color:'#3b5998'}} />
                                     </CopyToClipboard>
 
-                                    <FontAwesomeIcon icon={['fab', 'instagram']} style={{color:'#dd2a7b'}} onClick={onIGclick} />
-                                    <FontAwesomeIcon icon={['fab', 'twitter']} style={{color:'#00acee'}} onClick={onTwitterclick} />
+                                    <CopyToClipboard onCopy={onCopyIG} text={message}>
+                                        <FontAwesomeIcon icon={['fab', 'instagram']} style={{color:'#dd2a7b'}} />
+                                    </CopyToClipboard>    
+
+                                    <CopyToClipboard onCopy={onCopyTwitter} text={message}>
+                                        <FontAwesomeIcon icon={['fab', 'twitter']} style={{color:'#00acee'}}  />
+                                    </CopyToClipboard>
+                                    
                                 </Footer>
 
                             </ModalStyle>
