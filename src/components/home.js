@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components'
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import api from "../utils/api";
 
 import logo from "../assets/logo/logo.png"
@@ -8,13 +8,15 @@ import logo from "../assets/logo/logo.png"
 
 const LoginContainer = styled.div`
 
-    width: 90%;
+    margin-top: 25px;
+    width: 250px;
+    height: 350px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items:center;
     justify-content:center;
-    border-radius: 5px;
+    border-radius: 25px;
     background-color: #FFF;
     border: 1px solid blue;
     
@@ -23,88 +25,125 @@ const LoginContainer = styled.div`
 const Img = styled.img`
   width:150px;
   height:auto;
-`
 
+`;
+
+const LoginBtn = styled.button`
+  background-color: #15a9dc;
+  font-family: 'Quicksand';
+  color: #ffffff;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-animation: glowing 1500ms infinite;
+  -moz-animation: glowing 1500ms infinite;
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+  margin-top: 50px;
+
+  @-webkit-keyframes glowing {
+    0% { background-color: #15a9dc; -webkit-box-shadow: 0 0 3px #15a9dc; }
+    50% { background-color: #15a9dc; -webkit-box-shadow: 0 0 40px #15a9dc; }
+    100% { background-color: #15a9dc; -webkit-box-shadow: 0 0 3px #15a9dc; }
+  }
+
+  @-moz-keyframes glowing {
+    0% { background-color: #15a9dc; -moz-box-shadow: 0 0 3px #15a9dc; }
+    50% { background-color: #15a9dc; -moz-box-shadow: 0 0 40px #15a9dc; }
+    100% { background-color: #15a9dc; -moz-box-shadow: 0 0 3px #15a9dc; }
+  }
+
+  @-o-keyframes glowing {
+    0% { background-color: #15a9dc; box-shadow: 0 0 3px #15a9dc; }
+    50% { background-color: #15a9dc; box-shadow: 0 0 40px #15a9dc; }
+    100% { background-color: #15a9dc; box-shadow: 0 0 3px #15a9dc; }
+  }
+
+  @keyframes glowing {
+    0% { background-color: #15a9dc; box-shadow: 0 0 3px #15a9dc; }
+    50% { background-color: #15a9dc; box-shadow: 0 0 40px #15a9dc; }
+    100% { background-color: #15a9dc; box-shadow: 0 0 3px #15a9dc; }
+  }
+
+`;
+
+const CheckInBtn = styled.button`
+  background-color: #233479;
+  font-family: 'Quicksand';
+  color: #ffffff;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-animation: glowing-dark 1500ms infinite;
+  -moz-animation: glowing-dark 1500ms infinite;
+  -o-animation: glowing-dark 1500ms infinite;
+  animation: glowing-dark 1500ms infinite;
+  margin-top: 25px;
+
+  @-webkit-keyframes glowing-dark {
+    0% { background-color: #233479; -webkit-box-shadow: 0 0 3px #233479; }
+    50% { background-color: #233479; -webkit-box-shadow: 0 0 40px #233479; }
+    100% { background-color: #233479; -webkit-box-shadow: 0 0 3px #233479; }
+  }
+
+  @-moz-keyframes glowing-dark {
+    0% { background-color: #233479; -moz-box-shadow: 0 0 3px #233479; }
+    50% { background-color: #233479; -moz-box-shadow: 0 0 40px #233479; }
+    100% { background-color: #233479; -moz-box-shadow: 0 0 3px #233479; }
+  }
+
+  @-o-keyframes glowing-dark {
+    0% { background-color: #233479; box-shadow: 0 0 3px #233479; }
+    50% { background-color: #233479; box-shadow: 0 0 40px #233479; }
+    100% { background-color: #233479; box-shadow: 0 0 3px #233479; }
+  }
+
+  @keyframes glowing-dark {
+    0% { background-color: #233479; box-shadow: 0 0 3px #233479; }
+    50% { background-color: #233479; box-shadow: 0 0 40px #233479; }
+    100% { background-color: #233479; box-shadow: 0 0 3px #233479; }
+  }
+`;
 
 const Home = props => {
-  // make a post request to retrieve a token from the api
-  // when you have handled the token, navigate to the BubblePage route
+  
+  const history = useHistory();
 
-  const [isLoading, setIsLoading] = useState(false);
+  //Handle Login Click
+  function handleLoginClick(){
 
-  const [error, setError] = useState();
+    history.push("/login");
 
-  const [data, setData] = useState({
-    username: "",
-    password: ""
-  });
+  }
 
+  //Handle Checkin Click
+  function handleCheckInClick(){
 
-  const handleChange = e => {
-    setData({
-      ...data,
-      [e.target.name]: e.target.value
-    });
-  };
+    history.push("/checkin");
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  }
 
-    setIsLoading(true);
-
-
-    // api()
-    //   .post("/api/auth/login", data)
-    //     .then( res => {
-          
-          
-
-          
-    //     }
-        
-    //   );
-
-  };
 
   return (
     <>
-      {isLoading && <div>Loading... </div>}
-    <div style={{textAlign:'center'}}>
+    
+    <div style={{display:'flex', justifyContent:'center'}}>
+      
       <LoginContainer>
 
-        <Img src={logo} />
+        <Img className='' src={logo} />
 
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            background: "#f1f1f1",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "space-around",
-            padding: "30px 0px",
-            width: "175px"
-          }}
-        >
-          {error && <div className="error">{error}</div>}
+        <LoginBtn className='btn' onClick={handleLoginClick}>Log In</LoginBtn>
 
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={data.username}
-            onChange={handleChange}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={data.password}
-            onChange={handleChange}
-          />
-
-          <button type="submit">Sign In</button>
-        </form>
+        <CheckInBtn>Check In</CheckInBtn>
     
     </LoginContainer>
     </div>

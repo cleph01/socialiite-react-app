@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
+
+.btn{
+  font-family: 'Quicksand',
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bell{
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+  animation-name: ring-bell;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes ring-bell {
+  0% {
+      -webkit-transform: rotate(35deg);
+  }
+  12.5% {
+      -webkit-transform: rotate(-30deg);
+  }
+  25% {
+      -webkit-transform: rotate(25deg);
+  }
+  37.5% {
+      -webkit-transform: rotate(-20deg);
+  }
+  50% {
+      -webkit-transform: rotate(15deg);
+  }
+  62.5% {
+      -webkit-transform: rotate(-10deg);
+  }
+  75% {
+      -webkit-transform: rotate(5deg);
+  }
+  100% {
+      -webkit-transform: rotate(0deg);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Standard syntax */
+@keyframes ring-bell {
+  0% {
+      -webkit-transform: rotate(35deg);
+      transform: rotate(35deg);
   }
-  to {
-    transform: rotate(360deg);
+  12.5% {
+      -webkit-transform: rotate(-30deg);
+      transform: rotate(-30deg);
+  }
+  25% {
+      -webkit-transform: rotate(25deg);
+      transform: rotate(25deg);
+  }
+  37.5% {
+      -webkit-transform: rotate(-20deg);
+      transform: rotate(-20deg);
+  }
+  50% {
+      -webkit-transform: rotate(15deg);
+      transform: rotate(15deg);
+  }
+  62.5% {
+      -webkit-transform: rotate(-10deg);
+      transform: rotate(-10deg);
+  }
+  75% {
+      -webkit-transform: rotate(5deg);
+      transform: rotate(5deg);
+  }
+  100% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
   }
 }
