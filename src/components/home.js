@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from 'styled-components'
 import { Link, useHistory } from "react-router-dom";
-import api from "../utils/api";
+
 
 import logo from "../assets/logo/logo.png"
 

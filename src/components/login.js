@@ -1,7 +1,8 @@
+import { Button } from "@material-ui/core";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components'
-import api from "../utils/api";
+
 
 
 
@@ -31,24 +32,24 @@ const Login = props => {
     setIsLoading(true);
 
 
-    api().post("/api/auth/login", credentials)
-      .then( res => {
+    // api().post("/api/auth/login", credentials)
+    //   .then( res => {
 
         
             
-            //Set Token in Local Storage
-            localStorage.setItem("token", res.data.token);
+    //         //Set Token in Local Storage
+    //         localStorage.setItem("token", res.data.token);
 
-            //Set Username in Local Storage
-            localStorage.setItem("socialiite_username", res.data.user.username);
+    //         //Set Username in Local Storage
+    //         localStorage.setItem("socialiite_username", res.data.user.username);
 
-            setIsLoading(true);
+    //         setIsLoading(true);
   
-        })
-        .catch(err => {
-            // setError(err.response.data.message)
-            console.log(err);
-          });
+    //     })
+    //     .catch(err => {
+    //         // setError(err.response.data.message)
+    //         console.log(err);
+    //       });
     }
 
   return (

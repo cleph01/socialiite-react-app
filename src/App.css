@@ -1,76 +1,83 @@
-
-.btn{
-  font-family: 'Quicksand',
+* {
+    margin: 0;
 }
 
-.bell{
-  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
-  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
-  animation-name: ring-bell;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
+.app {
+    background-color: #fafafa;
+}
+
+.btn {
+    font-family: "Quicksand";
+}
+
+.bell {
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: ring-bell;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
 }
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes ring-bell {
-  0% {
-      -webkit-transform: rotate(35deg);
-  }
-  12.5% {
-      -webkit-transform: rotate(-30deg);
-  }
-  25% {
-      -webkit-transform: rotate(25deg);
-  }
-  37.5% {
-      -webkit-transform: rotate(-20deg);
-  }
-  50% {
-      -webkit-transform: rotate(15deg);
-  }
-  62.5% {
-      -webkit-transform: rotate(-10deg);
-  }
-  75% {
-      -webkit-transform: rotate(5deg);
-  }
-  100% {
-      -webkit-transform: rotate(0deg);
-  }
+    0% {
+        -webkit-transform: rotate(35deg);
+    }
+    12.5% {
+        -webkit-transform: rotate(-30deg);
+    }
+    25% {
+        -webkit-transform: rotate(25deg);
+    }
+    37.5% {
+        -webkit-transform: rotate(-20deg);
+    }
+    50% {
+        -webkit-transform: rotate(15deg);
+    }
+    62.5% {
+        -webkit-transform: rotate(-10deg);
+    }
+    75% {
+        -webkit-transform: rotate(5deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+    }
 }
 
 /* Standard syntax */
 @keyframes ring-bell {
-  0% {
-      -webkit-transform: rotate(35deg);
-      transform: rotate(35deg);
-  }
-  12.5% {
-      -webkit-transform: rotate(-30deg);
-      transform: rotate(-30deg);
-  }
-  25% {
-      -webkit-transform: rotate(25deg);
-      transform: rotate(25deg);
-  }
-  37.5% {
-      -webkit-transform: rotate(-20deg);
-      transform: rotate(-20deg);
-  }
-  50% {
-      -webkit-transform: rotate(15deg);
-      transform: rotate(15deg);
-  }
-  62.5% {
-      -webkit-transform: rotate(-10deg);
-      transform: rotate(-10deg);
-  }
-  75% {
-      -webkit-transform: rotate(5deg);
-      transform: rotate(5deg);
-  }
-  100% {
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg);
-  }
+    0% {
+        -webkit-transform: rotate(35deg);
+        transform: rotate(35deg);
+    }
+    12.5% {
+        -webkit-transform: rotate(-30deg);
+        transform: rotate(-30deg);
+    }
+    25% {
+        -webkit-transform: rotate(25deg);
+        transform: rotate(25deg);
+    }
+    37.5% {
+        -webkit-transform: rotate(-20deg);
+        transform: rotate(-20deg);
+    }
+    50% {
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg);
+    }
+    62.5% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+    }
+    75% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
 }

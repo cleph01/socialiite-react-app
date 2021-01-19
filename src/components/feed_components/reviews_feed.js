@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import styled from 'styled-components'
 import { Link, useHistory } from "react-router-dom";
+import classNames from 'classnames'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import Avatar from "@material-ui/core/Avatar";
+
 
 const Container = styled.div`
-
-    color: #516186;
+    margin-top: 50px;
+    background-color: #fff;
     width: 100%;
     height: 70px;
     display: flex;
@@ -15,6 +18,9 @@ const Container = styled.div`
     align-items:center;
     justify-content: space-around;
     box-shadow: 0 1px 6px -2px #000;
+    position: fixed;
+    top:0;
+    
     
 `;
 
@@ -46,28 +52,56 @@ const Reviews = props => {
   const history = useHistory();
 
 
-  const [reviews, setReviews] = useState([
+  const [stories, setStories] = useState([
     {
         userHandle:'cmoney',
         review:'Best sandwiches around',
         rating:4.89,
         reviewCount:156,
-        businessName:'Fratelli Market'
+        businessName:'Fratelli Market',
+        imageUrl:'/static/images/avatar/1.jpg'
     },
     {
         userHandle:'big_willy',
         review:'Amazing Burger Spot',
         rating:4.96,
         reviewCount:273,
-        businessName:'Hubbas'
+        businessName:'Hubbas',
+        imageUrl:'/static/images/avatar/1.jpg'
     },
     {
         userHandle:'Kit_Kat',
         review:'Most Beautiful Rings',
         rating:4.93,
         reviewCount:369,
-        businessName:"Papa's Jewelers"
-    } 
+        businessName:"Papa's Jewelers",
+        imageUrl:'/static/images/avatar/1.jpg'
+    },
+    {
+        userHandle:'cmoney',
+        review:'Best sandwiches around',
+        rating:4.89,
+        reviewCount:156,
+        businessName:'Fratelli Market',
+        imageUrl:'/static/images/avatar/1.jpg'
+    },
+    {
+        userHandle:'big_willy',
+        review:'Amazing Burger Spot',
+        rating:4.96,
+        reviewCount:273,
+        businessName:'Hubbas',
+        imageUrl:'/static/images/avatar/1.jpg'
+    },
+    {
+        userHandle:'Kit_Kat',
+        review:'Most Beautiful Rings',
+        rating:4.93,
+        reviewCount:369,
+        businessName:"Papa's Jewelers",
+        imageUrl:'/static/images/avatar/1.jpg'
+    }  
+
 ]);
 
 
@@ -79,13 +113,30 @@ const Reviews = props => {
   }
 
   
+  const [isWatched, setIsWatched] = useState(false)
+
+  const storyClass = classNames({
+      'post__avatar':true,
+      'glow': true,
+      'story-watched': isWatched
+  })
 
   return (
     <>
      
         <Container>
 
-            <FontAwesomeIcon icon='user' style={{fontSize:'32px', border:'1px solid #516186', borderRadius:'50%', padding:'12px'}} />
+            {stories.map( story => (
+                <Avatar 
+                    className="post__avatar"
+                    // alt="story.userHandle"
+                    alt={story.userHandle}
+                    src="/static/images/avatar/1.jpg"
+                    
+                />
+            ))}
+            
+            {/* <FontAwesomeIcon icon='user' style={{fontSize:'32px', border:'1px solid #516186', borderRadius:'50%', padding:'12px'}} />
 
             <ReviewText>
                 <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
@@ -99,7 +150,7 @@ const Reviews = props => {
                 </div>
             </ReviewText>
 
-            <BusinessLink>{reviews[0].businessName}</BusinessLink>
+            <BusinessLink>{reviews[0].businessName}</BusinessLink> */}
     
         </Container>
     
