@@ -14,7 +14,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items:center;
-    justify-content: space-around;
+    justify-content: center;
     box-shadow: 0 1px 6px -2px #000;
     margin:15px 0px;
     
@@ -33,7 +33,7 @@ const LeftWrapper = styled.div`
 `
 
 const RightWrapper = styled.div`
-    
+    margin-left: 25px;
     max-width: 210px;
     display: flex;
     flex-direction: column;
