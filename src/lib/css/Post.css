@@ -30,6 +30,11 @@
     flex-direction: column;
 }
 
+.app__posts {
+    margin-top: 150px;
+    padding: 20px;
+}
+
 .glow {
     -webkit-animation: glowing 1500ms infinite;
     -moz-animation: glowing 1500ms infinite;

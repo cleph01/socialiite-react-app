@@ -2,10 +2,12 @@ import React from 'react';
 import { Route, Link } from "react-router-dom";
 
 import Home from './components/home';
-import Login from './components/login';
-import FeedHome from './components/feed_components/feed_home';
+import Login from './components/login_components/login';
+import FeedHome from './components/home/feed_home';
+import FeedPromos from './components/home/feed_home';
 import Wallet from './components/wallet/wallet';
-import Post from './components/feed_components/Post';
+import Post from './components/post_components/Post';
+import Promos from './components/promo_components/feed_promo/PromoFeed';
 
 import './App.css';
 
@@ -23,9 +25,10 @@ function App() {
     <div className="app">
 
       <Route exact path="/" component={Home} />
-      <Route exact path="/post" component={Post} />
-      <Route exact path="/login" component={Login} />
       <Route exact path="/feed" component={FeedHome} />
+      <Route exact path="/posts" component={Post} />
+      <Route exact path="/promos" component={Promos} />
+      <Route exact path="/login" component={Login} />
       <Route exact path="/wallet" component={Wallet} />
 
     </div>

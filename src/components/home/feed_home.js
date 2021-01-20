@@ -7,15 +7,14 @@ import { db, auth } from '../../utils/firebase_config';
 import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 
-// Reviews Component
-import PromoStories from './reviews_feed';
+// Begin Components
+import PromoStories from '../review_components/reviews_feed';
+import Promos from '../promo_components/feed_promo/Promo';
+import Post from '../post_components/Post'; 
+import ImageUpload from '../feed_components/image_upload_components/ImageUpload';
+// End Components
 
-// Promo Component
-import Promos from './Promo';
 
-
-// Post Component
-import Post from './Post'
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -90,51 +89,6 @@ function FeedHome () {
 
   }
 
-  //Hold Details of Promotions -- Will be Redux/API call
-  const [promos, setPromos] = useState([
-    {
-        promoId:1,
-        emoji:'ring',
-        rating:4.98,
-        businessName:'Papas Gold City Jewelers',
-        promotion:'30% OFF ALL Jewelry (Mon 11-5pm)'
-    },
-    {
-        promoId:2,
-        emoji:'spaghetti',
-        rating:4.86 ,
-        businessName:'Fratelli Market',
-        promotion:'20% OFF Any Frozen Tray (Mon Only)'
-    },
-    {
-        promoId:3,
-        emoji:'cup_with_straw',
-        rating:4.53,
-        businessName:"Hubba's",
-        promotion:'FREE Sm Drink w/ Wedge: M-W(9-5)'
-    },
-    {
-        promoId:4,
-        emoji:'hotdog',
-        rating:4.49,
-        businessName:"Hubba's",
-        promotion:'FREE Dog w/ 2 Wedges: M-W(9-5)'
-    },
-    {
-        promoId:5,
-        emoji:'canned_food',
-        rating:4.26,
-        businessName:'Fratelli Market',
-        promotion:'FREE Sauce w/ Purch 2 Ravioli Boxes (Sun Only)'
-    },
-    {
-        promoId:5,
-        emoji:'taco',
-        rating:4.99,
-        businessName:"Hubba's",
-        promotion:'FREE Taco w/ Order of 6 Tacos: M-W(9-5)'
-    }    
-]);
 
 // State to hold post data from Firebase call
 const [posts, setPosts] = useState([]);
@@ -202,10 +156,13 @@ useEffect( () => {
 //every time a new user is added this code fires
 useEffect( () => {
 
-    db.collection('posts').onSnapshot(snapshot => {
+    db
+    .collection('posts')
+    .orderBy('timestamp', 'desc')
+    .onSnapshot(snapshot => {
         
         setPosts( snapshot.docs.map( doc => ({
-            id: doc.id,
+            postId: doc.id,
             post:doc.data()
         })))
         
@@ -267,18 +224,15 @@ const signIn = e => {
             ))}
         </div> */}
 
-        {/* I want to have... */}
-        {/* Caption input */}
-        {/* File Picker */}
-        {/* Post button */}
 
+        <div className="app__posts">
+        
 
-
-        <div style={{marginTop:'150px'}}>
         {
-            posts.map( ({post, id}) => (
+            posts.map( ({post, index}) => (
                 <Post 
-                    key={id}
+                    key={index}
+                    postId={post.postId}
                     username={post.username} 
                     caption={post.caption}
                     imageUrl={post.imageUrl}
@@ -286,6 +240,13 @@ const signIn = e => {
             ))
         }
         </div>
+
+        {user?.displayName ? (
+            <ImageUpload username={user.displayName} />
+        ) : (
+            <h3> Sorry you need to login to upload</h3>
+        )}
+
         
         {user ? (
             <Button onClick={() => auth.signOut()}>Logout</Button>

@@ -4,7 +4,26 @@ import { Link, useHistory } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+
 const emoji = require("emoji-dictionary");
+
+const Nav = styled.nav`
+
+    width: 100%;
+    height: 50px;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content:space-around;
+    background-color: #203158;
+    position: fixed;
+    top:0;
+    box-shadow: 0 1px 6px -2px #000;
+    object-fit: contain;
+    
+`;
 
 const Container = styled.div`
 
@@ -51,8 +70,6 @@ const PromoTextWrapper = styled.span`
     
 `
 
-
-
 const Button = styled.button`
     color: #ffffff;
     font-size: 20px;
@@ -66,7 +83,6 @@ const BusinessLink = styled.a`
     padding: 10px;
 `
 
-
 const Img = styled.img`
   width:75px;
   height:auto;
@@ -75,43 +91,45 @@ const Img = styled.img`
 
 
 
+
 const Promos = props => {
+
+    const history = useHistory();
+    
+    //Handle Login Click
+    function handleBusinessClick(business_id){
+
+        history.push(`/business/${business_id}`);
+
+    }
+
+    const handleShareClick = () =>{
+
+        props.showModal(props.promo_details)
+
+    }
   
-  const history = useHistory();
-
-
-  //Handle Login Click
-  function handleBusinessClick(business_id){
-
-    history.push(`/business/${business_id}`);
-
-  }
-
-  const handleShareClick = () =>{
-
-    props.showModal(props.promo_details)
-
-  }
-  
+    console.log(props,"Promo props")
 
   return (
     <>
      
+
         <Container>
  
             <div>
 
                 <LeftWrapper>
-                    <div>{emoji.getUnicode(props.promo_details.emoji)}</div>
-                    <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}><span>Rating:</span><span>{props.promo_details.rating}</span></div>
+                    {/* <div>{emoji.getUnicode(props.emoji)}</div> */}
+                    <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}><span>Rating:</span><span>{props.promo.rating}</span></div>
                 </LeftWrapper>
             </div>
             <div>
                 <RightWrapper>
 
                     <PromoTextWrapper>
-                        <div>{props.promo_details.businessName}</div>   
-                        <div>{props.promo_details.promotion}</div>
+                        <div>{props.promo.businessName}</div>   
+                        <div>{props.promo.promotion}</div>
                     </PromoTextWrapper>
 
                     <Button
