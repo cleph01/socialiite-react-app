@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import styled from 'styled-components'
+import '../../../lib/css/Promo.css'
 import { Link, useHistory } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import Avatar from "@material-ui/core/Avatar";
+import { Button, Modal } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles';
 
 const emoji = require("emoji-dictionary");
 
@@ -25,69 +29,27 @@ const Nav = styled.nav`
     
 `;
 
-const Container = styled.div`
-
-    color: #516186;
-    width: 100%;
-    height: 150px;
-    display: flex;
-    flex-direction: row;
-    align-items:center;
-    justify-content: center;
-    box-shadow: 0 1px 6px -2px #000;
-    margin:15px 0px;
-    
-    
-`;
-
-const LeftWrapper = styled.div`
-    width:75px;
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:center;
-    padding: 10px;
-    border-right: 1px solid #f1f1f1;
-    margin-left: 33%;
-`
-
-const RightWrapper = styled.div`
-    margin-left: 25px;
-    max-width: 210px;
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:center;
-    padding: 10px;
-    
-`
-
-const PromoTextWrapper = styled.span`
-    background-color: #faf8f8;
-    border-left: 1px solid #203158;
-    border-bottom: 1px solid #203158;
-    padding:10px;
-    
-`
-
-const Button = styled.button`
-    color: #ffffff;
-    font-size: 20px;
-    border-radius: 5px;
-    background-color: #037afb;
-    padding: 5px;
-    margin-top: 10px;
-`
-
-const BusinessLink = styled.a`
-    padding: 10px;
-`
-
-const Img = styled.img`
-  width:75px;
-  height:auto;
-
-`;
+function getModalStyle() {
+    const top = 50;
+    const left = 50;
+  
+    return {
+      top: `${top}%`,
+      left: `${left}%`,
+      transform: `translate(-${top}%, -${left}%)`,
+    };
+  }
+  
+  const useStyles = makeStyles((theme) => ({
+    paper: {
+      position: 'absolute',
+      width: 400,
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+    },
+  }));
 
 
 
@@ -96,6 +58,18 @@ const Promos = props => {
 
     const history = useHistory();
     
+    const imageUrl = "https://static01.nyt.com/images/2011/08/10/dining/10DOGS3/10DOGS3-articleLarge.jpg?quality=75&auto=webp&disable=upscale";
+
+    const caption = "Best Franfurter in the Biz"
+
+    // Modal Open State
+    const [open, setOpen] = useState(false)
+
+    // Start Modal Styling
+    const classes = useStyles();
+    const [modalStyle] = useState(getModalStyle)
+    // End Modal Styling
+
     //Handle Login Click
     function handleBusinessClick(business_id){
 
@@ -114,35 +88,61 @@ const Promos = props => {
   return (
     <>
      
-
-        <Container>
  
-            <div>
+            <div className="promo">
+                <div className="promo__header">
 
-                <LeftWrapper>
-                    {/* <div>{emoji.getUnicode(props.emoji)}</div> */}
-                    <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}><span>Rating:</span><span>{props.promo.rating}</span></div>
-                </LeftWrapper>
-            </div>
-            <div>
-                <RightWrapper>
+                    <Avatar
+                        className="promo__avatar"
+                        // alt="CMoney"
+                        alt={props.promo.businessName}
+                        src="/static/images/avatar/1.jpg"
+                    />
+                    <h3>{props.promo.businessName}</h3>
+                    
+                </div>    
+                <img alt="" className="promo__image" src={imageUrl}/>
+                {/* image */}
 
-                    <PromoTextWrapper>
-                        <div>{props.promo.businessName}</div>   
-                        <div>{props.promo.promotion}</div>
-                    </PromoTextWrapper>
+                {/* Liked By  and counter */}
 
-                    <Button
+                <h4 className="promo__text">
+                    {props.promo.promotion} 
+                </h4>
+
+                <h5 className="promo__text">Rating: {props.promo.rating}</h5>
+
+                <Button style={{margin:'10px'}}
                         onClick={handleShareClick}
-                    >
-                        Share &amp; Get Paid
-                    </Button>
+                        variant="outlined" 
+                >
+                    Share &amp; Get Paid
+                </Button>
 
-                </RightWrapper>
-
+                
             </div>
 
-        </Container>
+            <Modal 
+                open={open}
+                onClose = {() => setOpen(false)} 
+            >
+                <div style={modalStyle} className={classes.paper}>
+                    <form className="app__signup">
+                        
+                            <center>
+                                <div>boom</div>
+                            </center>
+
+                           
+
+                            <Button>Share and Get Paid</Button>
+                            
+                        
+                    </form>
+                    
+                </div>    
+            
+            </Modal>
     
       
     </>

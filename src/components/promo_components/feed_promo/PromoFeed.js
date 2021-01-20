@@ -8,6 +8,8 @@ import logo from "../../../assets/logo/logo_white_text.png"
 
 import Promo from './Promo';
 
+import { makeStyles } from '@material-ui/core/styles';
+
 const emoji = require("emoji-dictionary");
 
 const Nav = styled.nav`
@@ -28,64 +30,6 @@ const Nav = styled.nav`
     
 `;
 
-const Container = styled.div`
-
-    color: #516186;
-    width: 100%;
-    height: 150px;
-    display: flex;
-    flex-direction: row;
-    align-items:center;
-    justify-content: center;
-    box-shadow: 0 1px 6px -2px #000;
-    margin:15px 0px;
-    
-    
-`;
-
-const LeftWrapper = styled.div`
-    width:75px;
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:center;
-    padding: 10px;
-    border-right: 1px solid #f1f1f1;
-    margin-left: 33%;
-`
-
-const RightWrapper = styled.div`
-    margin-left: 25px;
-    max-width: 210px;
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:center;
-    padding: 10px;
-    
-`
-
-const PromoTextWrapper = styled.span`
-    background-color: #faf8f8;
-    border-left: 1px solid #203158;
-    border-bottom: 1px solid #203158;
-    padding:10px;
-    
-`
-
-const Button = styled.button`
-    color: #ffffff;
-    font-size: 20px;
-    border-radius: 5px;
-    background-color: #037afb;
-    padding: 5px;
-    margin-top: 10px;
-`
-
-const BusinessLink = styled.a`
-    padding: 10px;
-`
-
 const Img = styled.img`
   width:75px;
   height:auto;
@@ -93,10 +37,37 @@ const Img = styled.img`
 `;
 
 
+function getModalStyle() {
+    const top = 50;
+    const left = 50;
+  
+    return {
+      top: `${top}%`,
+      left: `${left}%`,
+      transform: `translate(-${top}%, -${left}%)`,
+    };
+  }
+
+  
+const useStyles = makeStyles((theme) => ({
+    paper: {
+    position: 'absolute',
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    },
+}));
 
 
 const Promos = props => {
 
+    const classes = useStyles();
+    // const [modalStyle] = useState(getModalStyle)
+
+    // //Holds Boolean to Control display of Modal onClick Share & Get Paid
+    // const [modalVisible, setmodalVisible] = useState(false);
 
         //Hold Details of Promotions -- Will be Redux/API call
 const [promos, setPromos] = useState([
@@ -147,6 +118,17 @@ const [promos, setPromos] = useState([
     const history = useHistory();
 
 
+    //Handle Home Click
+    // function backHomeClick(business_id){
+
+    //     history.push(`/feed/${user_id}`);
+    // }
+
+    function backHomeClick(business_id){
+
+        history.push(`/feed`);
+    }
+
     //Handle Login Click
     function handleBusinessClick(business_id){
 
@@ -164,28 +146,34 @@ const [promos, setPromos] = useState([
   return (
     <>
      
-    <Nav>
+    <div style={{display:'flex', flexDirection:'column', alignItems: 'center', justifyContent:'center'}}>
+    
+        <Nav>
 
-        <Img src={logo} />
+            <Img onClick={backHomeClick} src={logo} />
 
-        <FontAwesomeIcon className='bell' icon='bell' />
+            <FontAwesomeIcon className='bell' icon='bell' />
 
-        <FontAwesomeIcon icon='bullhorn' />
+            <FontAwesomeIcon onClick={backHomeClick} icon='home' />
 
-        <FontAwesomeIcon icon='bars' />
+            <FontAwesomeIcon icon='bars' />
 
-    </Nav>
+        </Nav>
 
-    {
-            promos.map( ({promo, index}) => (
-                
-                <Promo 
-                    key={index}
-                    promo={promo}
-                    
-                />
-            ))
-        }
+            <div className="promo__posts">
+                {
+                    promos.map( (promo, index) => (
+                        
+                        <Promo 
+                            key={index}
+                            promo={promo}
+                            
+                        />
+                        
+                    ))
+                }
+            </div>
+    </div>
     
       
     </>

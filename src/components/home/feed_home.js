@@ -9,7 +9,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // Begin Components
 import PromoStories from '../review_components/reviews_feed';
-import Promos from '../promo_components/feed_promo/Promo';
 import Post from '../post_components/Post'; 
 import ImageUpload from '../feed_components/image_upload_components/ImageUpload';
 // End Components
@@ -138,7 +137,7 @@ useEffect( () => {
     auth.onAuthStateChanged((authUser) => {
         if(authUser){
             // user has logged in...
-            console.log(authUser)
+            console.log(authUser, "AuthUser")
             setUser(authUser)
         } else {
             // user has logged out...
@@ -197,7 +196,6 @@ const signIn = e => {
     
     <div style={{display:'flex', flexDirection:'column', alignItems: 'center', justifyContent:'center'}}>
       
-
         <Nav>
 
             <Img src={logo} />
@@ -212,22 +210,11 @@ const signIn = e => {
 
         <PromoStories />
 
-        {/* <div style={{marginTop:'10px', width:'100%'}}>
-            {promos.map((item, index) => (
-                <Promos 
-                key={index} 
-                promo_details={item}
-                showModal={showModal}
-                setModalContent={setModalContent}
-                
-                />
-            ))}
-        </div> */}
-
 
         <div className="app__posts">
-        
 
+        {user ? (<div>{user.uid}</div>):<div>not yet</div>}
+        
         {
             posts.map( ({post, index}) => (
                 <Post 
@@ -257,6 +244,8 @@ const signIn = e => {
                 </div>
             )
           }
+
+        
         
     </div>
 

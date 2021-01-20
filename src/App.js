@@ -4,7 +4,6 @@ import { Route, Link } from "react-router-dom";
 import Home from './components/home';
 import Login from './components/login_components/login';
 import FeedHome from './components/home/feed_home';
-import FeedPromos from './components/home/feed_home';
 import Wallet from './components/wallet/wallet';
 import Post from './components/post_components/Post';
 import Promos from './components/promo_components/feed_promo/PromoFeed';
@@ -14,9 +13,9 @@ import './App.css';
 //Start Font Awesome Icons
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faBell, faBullhorn, faBars, faUser, faFire, faPhone, faShoppingCart, faCommentDollar, faWindowClose } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faBell, faBullhorn, faBars, faUser, faFire, faPhone, faShoppingCart, faCommentDollar, faWindowClose } from '@fortawesome/free-solid-svg-icons'
  
-library.add(fab, faBell, faBullhorn, faBars, faUser, faFire, faPhone, faShoppingCart, faCommentDollar, faWindowClose)
+library.add(fab, faHome, faBell, faBullhorn, faBars, faUser, faFire, faPhone, faShoppingCart, faCommentDollar, faWindowClose)
 //End Font Awesome Icons
 
 function App() {
