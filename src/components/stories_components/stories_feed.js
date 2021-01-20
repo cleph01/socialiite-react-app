@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components'
-import { Link, useHistory } from "react-router-dom";
-import classNames from 'classnames'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useHistory } from "react-router-dom";
 
 import Avatar from "@material-ui/core/Avatar";
 
@@ -24,30 +21,9 @@ const Container = styled.div`
     
 `;
 
-const ReviewText = styled.div`
-    
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:center;
-    padding: 10px;
-`
 
 
-const BusinessLink = styled.a`
-    padding: 10px;
-`
-
-
-const Img = styled.img`
-  width:75px;
-  height:auto;
-
-`;
-
-
-
-const Reviews = props => {
+const Stories = props => {
   
   const history = useHistory();
 
@@ -105,52 +81,88 @@ const Reviews = props => {
 ]);
 
 
+const [promos, setPromos] = useState([
+    {
+        promoId:1,
+        businessId:'papas',
+        emoji:'ring',
+        rating:4.98,
+        businessName:'Papas Gold City Jewelers',
+        promotion:'30% OFF ALL Jewelry (Mon 11-5pm)'
+    },
+    {
+        promoId:2,
+        businessId:'fratelli',
+        emoji:'spaghetti',
+        rating:4.86 ,
+        businessName:'Fratelli Market',
+        promotion:'20% OFF Any Frozen Tray (Mon Only)'
+    },
+    {
+        promoId:3,
+        businessId:'hubbas',
+        emoji:'cup_with_straw',
+        rating:4.53,
+        businessName:"Hubba's",
+        promotion:'FREE Sm Drink w/ Wedge: M-W(9-5)'
+    },
+    {
+        promoId:4,
+        businessId:'hubbas',
+        emoji:'hotdog',
+        rating:4.49,
+        businessName:"Hubba's",
+        promotion:'FREE Dog w/ 2 Wedges: M-W(9-5)'
+    },
+    {
+        promoId:5,
+        businessId:'fratelli',
+        emoji:'canned_food',
+        rating:4.26,
+        businessName:'Fratelli Market',
+        promotion:'FREE Sauce w/ Purch 2 Ravioli Boxes (Sun Only)'
+    },
+    {
+        promoId:5,
+        businessId:'hubbas',
+        emoji:'taco',
+        rating:4.99,
+        businessName:"Hubba's",
+        promotion:'FREE Taco w/ Order of 6 Tacos: M-W(9-5)'
+    }    
+]);
+
+
   //Handle Login Click
-  function handleBusinessClick(business_id){
+  function handleStoryClick(business_id){
 
     history.push(`/business/${business_id}`);
 
   }
 
-  
   const [isWatched, setIsWatched] = useState(false)
 
-  const storyClass = classNames({
-      'post__avatar':true,
-      'glow': true,
-      'story-watched': isWatched
-  })
+  
 
   return (
     <>
      
         <Container>
 
-            {stories.map( story => (
+            {/* Need to figure out Capping map output 
+            according to screensize*/}
+
+            {promos.map( promo => (
                 <Avatar 
                     className="post__avatar"
                     // alt="story.userHandle"
-                    alt={story.userHandle}
+                    alt={promo.businessName}
                     src="/static/images/avatar/1.jpg"
+                    onClick={ ()=>handleStoryClick(promo.businessId)}
                     
                 />
             ))}
-            
-            {/* <FontAwesomeIcon icon='user' style={{fontSize:'32px', border:'1px solid #516186', borderRadius:'50%', padding:'12px'}} />
-
-            <ReviewText>
-                <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-                    <div>{reviews[0].userHandle}</div>
-                    <div>"{reviews[0].review}"</div> 
-                    <div>
-                        <span>{reviews[0].rating} </span>
-                        <FontAwesomeIcon style={{color:'#037afb'}} icon='fire' />
-                        <span> ({reviews[0].reviewCount})</span>
-                    </div>   
-                </div>
-            </ReviewText>
-
-            <BusinessLink>{reviews[0].businessName}</BusinessLink> */}
+        
     
         </Container>
     
@@ -159,4 +171,4 @@ const Reviews = props => {
   );
 };
 
-export default Reviews;
+export default Stories;

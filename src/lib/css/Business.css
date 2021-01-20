@@ -1,0 +1,33 @@
+@import "./Nav.css";
+
+.business {
+    background-color: #ffffff;
+    max-width: 500px;
+    border: 1px solid lightgray;
+    margin-bottom: 45px;
+}
+.business__image {
+    width: 100%;
+    object-fit: contain;
+    border-top: 1px solid lightgray;
+}
+
+.business__text {
+    font-weight: normal;
+    padding: 20px;
+}
+
+.business__header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.business__avatar {
+    margin-right: 10px;
+}
+
+.business__posts {
+    margin-top: 33px;
+    padding: 20px;
+}

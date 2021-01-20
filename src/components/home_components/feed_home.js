@@ -8,42 +8,19 @@ import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 
 // Begin Components
-import PromoStories from '../review_components/reviews_feed';
+import PromoStories from '../stories_components/stories_feed';
 import Post from '../post_components/Post'; 
-import ImageUpload from '../feed_components/image_upload_components/ImageUpload';
+import ImageUpload from '../image_upload_components/ImageUpload';
+import Nav from '../navigation_components/Nav';
 // End Components
 
+import '../../lib/css/Post.css'
 
-
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import logo from "../../assets/logo/logo_white_text.png"
 import { Button, Input } from "@material-ui/core";
 
-const Nav = styled.nav`
 
-    width: 100%;
-    height: 50px;
-    color: #ffffff;
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items:center;
-    justify-content:space-around;
-    background-color: #203158;
-    position: fixed;
-    top:0;
-    box-shadow: 0 1px 6px -2px #000;
-    object-fit: contain;
-    
-`;
-
-const Img = styled.img`
-  width:75px;
-  height:auto;
-
-`;
 
 function getModalStyle() {
     const top = 50;
@@ -81,6 +58,13 @@ function FeedHome () {
 
   }
 
+  //
+  function promoFeedClick(){
+      
+    history.push("/promos");
+
+  }
+
   //Handle Checkin Click
   const handleCheckInClick = props => {
 
@@ -95,6 +79,10 @@ const [posts, setPosts] = useState([]);
 // Begin - Sign Up Modal 
 const [open, setOpen] = useState(false);
 // End - Sign Up Modal
+
+// Begin - Upload Modal 
+const [openUpload, setOpenUpload] = useState(false);
+// End - Upload Modal
 
 // Begin - Sign Up Modal 
 const [openSignIn, setOpenSignIn] = useState(false);
@@ -196,17 +184,14 @@ const signIn = e => {
     
     <div style={{display:'flex', flexDirection:'column', alignItems: 'center', justifyContent:'center'}}>
       
-        <Nav>
-
-            <Img src={logo} />
-
-            <FontAwesomeIcon className='bell' icon='bell' />
-
-            <FontAwesomeIcon icon='bullhorn' />
-
-            <FontAwesomeIcon icon='bars' />
-    
-        </Nav>
+        <Nav 
+            destination1="notification" 
+            destination2="promos"
+            icon1="bell" 
+            icon2="bullhorn" 
+            setOpenUpload={setOpenUpload}
+        />
+            
 
         <PromoStories />
 
@@ -214,9 +199,9 @@ const signIn = e => {
         <div className="app__posts">
 
         {user ? (<div>{user.uid}</div>):<div>not yet</div>}
-        
+
         {
-            posts.map( ({post, index}) => (
+            posts.map( ({post}, index) => (
                 <Post 
                     key={index}
                     postId={post.postId}
@@ -227,12 +212,6 @@ const signIn = e => {
             ))
         }
         </div>
-
-        {user?.displayName ? (
-            <ImageUpload username={user.displayName} />
-        ) : (
-            <h3> Sorry you need to login to upload</h3>
-        )}
 
         
         {user ? (
@@ -249,6 +228,25 @@ const signIn = e => {
         
     </div>
 
+
+    <Modal 
+        open={openUpload}
+        onClose = {() => setOpenUpload(false)} 
+    >
+        <div style={modalStyle} className={classes.paper}>
+
+            {user?.displayName ? (
+                <ImageUpload 
+                    setOpenUpload={setOpenUpload}
+                    username={user.displayName} />
+            ) : (
+                <h3> Sorry you need to login to upload</h3>
+            )}
+            
+        </div>    
+       
+    </Modal>
+
     <Modal 
         open={open}
         onClose = {() => setOpen(false)} 
@@ -257,12 +255,7 @@ const signIn = e => {
             <form className="app__signup">
                 
                     <center>
-                        <Img 
-                            src={logo}
-                            alt="Sociallite Logo" 
-                            style={{backgroundColor:'midnightblue', padding:'10px'}}
-                            
-                        />
+                        <h3>Sign Up</h3>
                     </center>
 
                     <Input
@@ -304,12 +297,7 @@ const signIn = e => {
             <form className="app__signup">
                 
                     <center>
-                        <Img 
-                            src={logo}
-                            alt="Sociallite Logo" 
-                            style={{backgroundColor:'midnightblue', padding:'10px'}}
-                            
-                        />
+                        <h3>Sign In</h3>
                     </center>
 
                     <Input
