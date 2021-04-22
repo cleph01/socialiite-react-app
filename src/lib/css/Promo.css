@@ -1,0 +1,30 @@
+.promo {
+    background-color: #ffffff;
+    max-width: 500px;
+    border: 1px solid lightgray;
+    margin-bottom: 45px;
+}
+.promo__posts {
+    margin-top: 125px;
+    padding: 20px;
+}
+.promo__image {
+    width: 100%;
+    object-fit: contain;
+    border-top: 1px solid lightgray;
+}
+
+.promo__text {
+    font-weight: normal;
+    padding: 20px;
+}
+
+.promo__header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.promo__avatar {
+    margin-right: 10px;
+}

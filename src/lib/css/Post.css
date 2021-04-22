@@ -1,3 +1,5 @@
+@import "../css/Nav.css";
+
 .post {
     background-color: #ffffff;
     max-width: 500px;
@@ -30,6 +32,30 @@
     flex-direction: column;
 }
 
+.app__posts {
+    margin-top: 150px;
+    padding: 20px;
+}
+.post__comments {
+    padding: 0px 0px 20px 20px;
+}
+.post__commentBox {
+    display: flex;
+    margin-top: 10px;
+}
+.post__input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-top: 1px solid lightgray;
+}
+.post__button {
+    flex: 0;
+    border: none;
+    color: #6082a3;
+    background-color: transparent;
+    border-top: 1px solid lightgray;
+}
 .glow {
     -webkit-animation: glowing 1500ms infinite;
     -moz-animation: glowing 1500ms infinite;
