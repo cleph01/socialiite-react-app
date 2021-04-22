@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import '../../../lib/css/Promo.css'
 import { Link, useHistory } from "react-router-dom";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 import Avatar from "@material-ui/core/Avatar";
 import { Button, Modal } from "@material-ui/core";
@@ -89,7 +89,7 @@ const Promos = ({promo}) => {
                             alt={promo.businessName}
                             src="/static/images/avatar/1.jpg"
                         />
-                        <h3 onClick={() => handleBusinessClick(promo.businessId)}>{promo.businessName} <sup><FontAwesomeIcon icon="link" size="xs" /></sup></h3>
+                        <h3 onClick={() => handleBusinessClick(promo.businessId)}>{promo.businessName} <sup>Link</sup></h3>
                         
                     </div>
                 

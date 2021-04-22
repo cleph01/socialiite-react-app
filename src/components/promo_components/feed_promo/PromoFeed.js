@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import styled from 'styled-components'
-import { Link, useHistory } from "react-router-dom";
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useHistory } from "react-router-dom";
 
 import logo from "../../../assets/logo/logo_white_text.png"
 
 import Promo from './Promo';
 
 import Nav from '../../navigation_components/Nav'
+import PromoStories from '../../stories_components/StoriesFeed';
 
 import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
@@ -132,11 +130,8 @@ const [promos, setPromos] = useState([
      
     <div style={{display:'flex', flexDirection:'column', alignItems: 'center', justifyContent:'center'}}>
     
-        <Nav 
-            destination1="notification"
-            destination2="feed" 
-            icon1="bell" 
-            icon2="home" />
+        
+        <PromoStories />
 
         <div className="promo__posts">
             {

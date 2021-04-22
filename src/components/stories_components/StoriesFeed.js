@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 
 import Avatar from "@material-ui/core/Avatar";
 
+import { FaPlusCircle } from 'react-icons/fa'
+
 
 const Container = styled.div`
     margin-top: 50px;
@@ -147,13 +149,18 @@ const [promos, setPromos] = useState([
   return (
     <>
      
+     
+
         <Container>
 
             {/* Need to figure out Capping map output 
             according to screensize*/}
-
-            {promos.map( promo => (
+            
+            <FaPlusCircle style={{fontSize:"40px", color:"#203158"}} />
+            
+            {promos.map( (promo, index) => (
                 <Avatar 
+                    key={index}
                     className="post__avatar"
                     // alt="story.userHandle"
                     alt={promo.businessName}

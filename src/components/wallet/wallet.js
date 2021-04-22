@@ -5,9 +5,6 @@ import { Link, useHistory } from "react-router-dom";
 import Wallet_Item from "./wallet-item"
 
 
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import logo from "../../assets/logo/logo_white_text.png"
 
 
@@ -90,7 +87,7 @@ const Wallet = props => {
 
             <Img src={logo} />
 
-            <FontAwesomeIcon icon='bars' />
+            
     
         </Nav>
 

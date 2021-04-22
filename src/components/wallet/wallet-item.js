@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import { Link, useHistory } from "react-router-dom";
 
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import logo from "../../assets/logo/logo_white_text.png"
 
 const emoji = require("emoji-dictionary");
@@ -160,7 +158,7 @@ console.log(props)
             <Body>
                 <div>
                  
-                    <FontAwesomeIcon className='fa-flip-horizontal' icon='phone' />
+                    Phone
 
                 </div>
 
@@ -172,7 +170,7 @@ console.log(props)
 
                 <div>
                     
-                    <FontAwesomeIcon icon='shopping-cart' />
+                    Shopping Cart
 
                 </div>    
             </Body>

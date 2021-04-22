@@ -9,7 +9,7 @@ import '../../lib/css/ImageUpload.css';
 
 
 
-function ImageUpload( {username, setOpenUpload} ) {
+function ImageUpload( {userId, username, setOpenUpload} ) {
 
     const [image, setImage] = useState(null)
     const [url, setUrl] = useState('')
@@ -52,7 +52,9 @@ function ImageUpload( {username, setOpenUpload} ) {
                         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                         caption: caption,
                         imageUrl: url,
-                        username: username
+                        username: username,
+                        userId: userId
+                        
                     });
 
                     setProgress(0);

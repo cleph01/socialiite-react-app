@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link, useHistory, useParams } from "react-router-dom"
+import { Link, useHistory, useParams, useLocation } from "react-router-dom"
 
 import Nav from '../navigation_components/Nav'
 import Business from './Business'
 
-import '../../lib/css/Business.css'
+import PromoStories from '../stories_components/StoriesFeed';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import '../../lib/css/Business.css'
 
 import logo from "../../assets/logo/logo_white_text.png"
 
@@ -21,16 +21,12 @@ function BusinessFeed() {
 
     }
 
+    const location = useLocation();
+
+    console.log("Path: ", location.pathname)
+    
     return (
         <div>
-            <Nav 
-                icon1="home"
-                icon2="bullhorn"
-                destination1="feed"
-                destination2="promos"
-            />
-
-            
             <Business />
         </div>
     )
