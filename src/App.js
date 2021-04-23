@@ -124,7 +124,9 @@ function App() {
           />
 
         <Route exact path="/" component={Home} />
-              
+
+        <Route exact path="/profile" component={Profile} />
+
         <Route exact path="/business" component={BusinessFeed} />
 
         <Route exact path="/business/:businessId" component={Business} />

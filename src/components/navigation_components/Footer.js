@@ -41,18 +41,20 @@ function Footer( {icon1, icon2, destination1, destination2, setOpenUpload} ) {
             <footer className="footer">
                 
                 <FaHome
-                    onClick={handleDestination1Click}
+                    onClick={ ()=>{history.push('/')} }
                     // className='bell' 
                     />
 
                 <FaBell
-                    onClick={() => setOpenUpload(true)} 
+                    onClick={ ()=>{history.push('/notifications')} } 
                     />
 
-                <FaPlusSquare />
+                <FaPlusSquare 
+                    onClick={ () => setOpenUpload(true) }
+                    />
                 
                 <FaBullhorn 
-                    onClick={handleDestination2Click} 
+                    onClick={ ()=>{history.push('/promotions')} } 
                 />
 
                 <FaUser 
