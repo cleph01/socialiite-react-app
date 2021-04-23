@@ -1,18 +1,20 @@
 import React from 'react'
 
 // Begin Components
-import PromoStories from '../stories_components/StoriesFeed';
-import Nav from '../navigation_components/Nav';
-import Footer from '../navigation_components/Footer';
+
 // End Components
 
-import '../../lib/css/Post.css'
 
 
 function Profile() {
     return (
         <>
-        <div style={{display:'flex', flexDirection:'column', alignItems: 'center', justifyContent:'center'}}>
+        <div style={{display:'flex', 
+            flexDirection:'column', 
+            alignItems: 'center', 
+            justifyContent:'center', 
+            height: '100vh'
+            }}>
       
             {/* <Nav 
                 user={user}
@@ -22,7 +24,7 @@ function Profile() {
             /> */}
                 
 
-            <PromoStories />
+            Profile Page
 
 
             
